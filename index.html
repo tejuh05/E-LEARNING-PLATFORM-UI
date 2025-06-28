@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LearnHub - E-Learning Platform</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="min-h-screen">
+  <!-- Mobile Menu Button -->
+  <button id="menuToggle" class="md:hidden fixed top-4 left-4 z-50 bg-indigo-600 p-2 rounded-lg shadow-lg">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+    </svg>
+  </button>
+
+  <!-- Sidebar -->
+  <div id="sidebar" class="sidebar fixed h-full w-64 bg-gray-900 text-white p-4 shadow-lg">
+    <div class="flex items-center mb-8">
+      <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/a433e240-6150-4a03-afdb-dc4672e9fa52.png" alt="LearnHub logo" class="rounded-full mr-2" />
+      <h1 class="text-xl font-bold">LearnHub</h1>
+    </div>
+    <nav>
+      <ul class="space-y-2">
+        <li>
+          <a href="#dashboard" class="flex items-center p-2 rounded-lg hover:bg-indigo-800 transition">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12h6m6 0h6M6 12V6m6 6v6m6-6v9" />
+</svg>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2..." />
+            </svg>
+            Dashboard
+          </a>
+        </li>
+        <!-- My Courses dropdown -->
+        <li>
+          <div class="dropdown">
+            <button class="flex items-center justify-between w-full p-2 rounded-lg hover:bg-indigo-800 transition">
+              <div class="flex items-center">
+               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 20l9-5-9-5-9 5 9 5z" />
+</svg>
+                My Courses
+              </div>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transform transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            <div class="dropdown-content pl-8 mt-1">
+              <ul class="space-y-2">
+                <li><a href="#enrolled" class="block p-2 rounded-lg hover:bg-indigo-800 transition">Enrolled</a></li>
+                <li><a href="#completed" class="block p-2 rounded-lg hover:bg-indigo-800 transition">Completed</a></li>
+                <li><a href="#wishlist" class="block p-2 rounded-lg hover:bg-indigo-800 transition">Wishlist</a></li>
+              </ul>
+            </div>
+          </div>
+        </li>
+        <!-- Other nav items (progress, library) go here -->
+                 <li>
+          <a href="#progress" class="flex items-center p-2 rounded-lg hover:bg-indigo-800 transition">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 17l6-6 4 4 8-8" />
+</svg>
+            Progress Tracking
+          </a>
+        </li>
+        <li>
+          <a href="#library" class="flex items-center p-2 rounded-lg hover:bg-indigo-800 transition">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="..." />
+            </svg>
+            Course Library
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Profile -->
+    <div class="absolute bottom-4 left-4 right-4">
+      <div class="flex items-center p-2 bg-gray-800 rounded-lg">
+        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/f1bf836e-9257-4815-8b35-ecee46cdff0b.png" alt="User Profile" class="rounded-full mr-2 border-2 border-pink-300" />
+        <div>
+          <p class="font-medium">Sarah Johnson</p>
+          <p class="text-xs text-pink-300">Student</p>
+        </div>
+        <button class="ml-auto text-gray-400 hover:text-white">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Wrapper -->
+  <div class="ml-0 md:ml-64 transition-all duration-300">
+
+    <!-- Header -->
+    <header class="bg-gray-800 p-4 shadow-md">
+      <div class="flex justify-between items-center">
+        <h2 class="text-xl font-semibold bg-gradient-to-r from-indigo-300 to-blue-300 bg-clip-text text-transparent" id="pageTitle">Dashboard</h2>
+        <div class="flex items-center space-x-4">
+          <div class="relative">
+            <input type="text" placeholder="Search courses..." class="bg-gray-700 text-white px-4 py-2 rounded-lg w-64 focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 absolute right-3 top-2.5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="..." />
+            </svg>
+          </div>
+          <button class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg transition">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </header>
+        <!-- Dashboard Page -->
+    <main id="dashboard" class="page p-6">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+        <!-- Progress Summary -->
+        <div class="bg-gray-800 rounded-lg p-6 shadow-lg">
+          <h3 class="text-lg font-semibold mb-4 text-indigo-300">Your Learning Progress</h3>
+          <div class="flex items-center space-x-4">
+            <div class="relative w-20 h-20">
+              <svg class="w-full h-full" viewBox="0 0 100 100">
+                <circle class="text-gray-700" stroke-width="8" stroke="currentColor" fill="transparent" r="40" cx="50" cy="50" />
+                <circle class="progress-ring__circle text-indigo-500" stroke-width="8" stroke-linecap="round" stroke="currentColor" fill="transparent" r="40" cx="50" cy="50" />
+              </svg>
+              <div class="absolute inset-0 flex items-center justify-center">
+                <span class="text-xl font-bold text-indigo-300 drop-shadow-md">65%</span>
+              </div>
+            </div>
+            <div>
+              <p class="text-gray-400">Courses Completed</p>
+              <p class="text-2xl font-bold">3/5</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Active Courses -->
+        <div class="bg-gray-800 rounded-lg p-6 shadow-lg">
+          <h3 class="text-lg font-semibold mb-4 text-teal-300 drop-shadow-md">Active Courses</h3>
+          <div class="space-y-4">
+            <div>
+              <div class="flex justify-between mb-1">
+                <span class="text-sm font-medium">Web Development</span>
+                <span class="text-sm text-gray-400">72%</span>
+              </div>
+              <div class="w-full bg-gray-700 rounded-full h-2">
+                <div class="bg-indigo-500 h-2 rounded-full" style="width: 72%"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between mb-1">
+                <span class="text-sm font-medium">Data Science</span>
+                <span class="text-sm text-gray-400">45%</span>
+              </div>
+              <div class="w-full bg-gray-700 rounded-full h-2">
+                <div class="bg-teal-500 h-2 rounded-full" style="width: 45%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Upcoming Deadlines -->
+        <div class="bg-gray-800 rounded-lg p-6 shadow-lg">
+          <h3 class="text-lg font-semibold mb-4">Upcoming Deadlines</h3>
+          <div class="space-y-3">
+            <div class="flex items-center">
+              <div class="bg-indigo-600 rounded-lg p-2 mr-3">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 4H7a2 2 0 01-2-2V6a2 2 0 012-2h3l2 2h6a2 2 0 012 2v12a2 2 0 01-2 2z" />
+</svg>
+              </div>
+              <div>
+                <p class="font-medium">Web Dev Assignment</p>
+                <p class="text-sm text-gray-400">Due in 2 days</p>
+              </div>
+            </div>
+            <div class="flex items-center">
+              <div class="bg-teal-600 rounded-lg p-2 mr-3">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16h8m-4-4h4m-8-4h8M4 6h16M4 12h4m0 0v4" />
+</svg>
+              </div>
+              <div>
+                <p class="font-medium">Data Science Quiz</p>
+                <p class="text-sm text-gray-400">Due in 5 days</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+            <!-- Recommended Courses -->
+      <div class="mb-8">
+        <div class="flex justify-between items-center mb-4">
+          <h3 class="text-xl font-semibold bg-gradient-to-r from-teal-300 to-emerald-300 bg-clip-text text-transparent">Recommended For You</h3>
+          <a href="#" class="text-indigo-400 hover:text-indigo-300 text-sm">View All</a>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          <!-- Course Cards 1–4 -->
+      
+<!-- Course Card 1 -->
+<div class="bg-gray-800 p-4 rounded-lg shadow-lg course-card transition-transform">
+   <span class="absolute top-2 left-2 bg-rose-500 text-white text-xs font-semibold px-2 py-1 rounded-full shadow z-10">New</span>
+
+  <img src="https://cdn.pixabay.com/photo/2016/03/27/18/54/technology-1283624_1280.jpg" alt="Advanced JavaScript" class="rounded mb-4 w-full h-40 object-cover" />
+  <h4 class="text-lg font-semibold">Advanced JavaScript</h4>
+  <p class="text-sm text-gray-400">Master closures, promises & ES6+</p>
+  <div class="flex justify-between items-center mt-3">
+    <span class="text-sm text-indigo-400 font-medium">$49.99</span>
+    <span class="text-sm text-yellow-400">★★★★☆</span>
+  </div>
+</div>
+
+<!-- Course Card 2 -->
+<div class="bg-gray-800 p-4 rounded-lg shadow-lg course-card transition-transform">
+  <img src="https://cdn.pixabay.com/photo/2016/11/19/22/52/coding-1841550_1280.jpg" alt="Machine Learning Basics" class="rounded mb-4 w-full h-40 object-cover" />
+  <h4 class="text-lg font-semibold">Machine Learning Basics</h4>
+  <p class="text-sm text-gray-400">Linear regression to classification</p>
+  <div class="flex justify-between items-center mt-3">
+    <span class="text-sm text-indigo-400 font-medium">Free</span>
+    <span class="text-sm text-yellow-400">★★★★★</span>
+  </div>
+</div>
+
+<!-- Course Card 3 -->
+<div class="bg-gray-800 p-4 rounded-lg shadow-lg course-card transition-transform">
+   <span class="absolute top-2 left-2 bg-rose-500 text-white text-xs font-semibold px-2 py-1 rounded-full shadow z-10">Popular</span>
+
+  <img src="https://cdn.pixabay.com/photo/2015/05/29/10/33/ux-789162_1280.jpg" alt="UI/UX Design Principles" class="rounded mb-4 w-full h-40 object-cover" />
+  <h4 class="text-lg font-semibold">UI/UX Design Principles</h4>
+  <p class="text-sm text-gray-400">Build sleek & user-friendly designs</p>
+  <div class="flex justify-between items-center mt-3">
+    <span class="text-sm text-indigo-400 font-medium">$39.99</span>
+    <span class="text-sm text-yellow-400">★★★★☆</span>
+  </div>
+</div>
+
+<!-- Course Card 4 -->
+<div class="bg-gray-800 p-4 rounded-lg shadow-lg course-card transition-transform">
+  <img src="https://cdn.pixabay.com/photo/2015/09/09/21/12/monitor-933392_1280.jpg" alt="React Native Mastery" class="rounded mb-4 w-full h-40 object-cover" />
+  <h4 class="text-lg font-semibold">React Native Mastery</h4>
+  <p class="text-sm text-gray-400">Create cross-platform mobile apps</p>
+  <div class="flex justify-between items-center mt-3">
+    <span class="text-sm text-indigo-400 font-medium">$29.99</span>
+    <span class="text-sm text-yellow-400">★★★☆☆</span>
+  </div>
+</div>
+          <!-- Advanced JavaScript, Machine Learning Basics, UI/UX Design Principles, React Native Mastery -->
+          <!-- (Paste your original card HTML here. I can re-paste them in full if you prefer!) -->
+        </div>
+      </div>
+
+      <!-- Recent Activity -->
+      <div>
+        <h3 class="text-xl font-semibold mb-4 text-purple-300 drop-shadow-md">Recent Activity</h3>
+        <div class="bg-gray-800 rounded-lg p-6 shadow-lg">
+          <div class="space-y-4">
+            <div class="flex items-start space-x-3">
+              <div class="bg-indigo-600 rounded-full p-2 flex-shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+</svg>
+              </div>
+              <div>
+                <p class="font-medium">Completed "JavaScript Functions" lesson</p>
+                <p class="text-sm text-gray-400">Web Development Course • 2 hours ago</p>
+              </div>
+            </div>
+
+            <div class="flex items-start">
+              <div class="bg-teal-600 rounded-full p-2 mr-3">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-5.197-3.027A1 1 0 008 9v6a1 1 0 001.555.832l5.197-3.027a1 1 0 000-1.664z" />
+</svg>
+              </div>
+              <div>
+                <p class="font-medium">Watched "Pandas DataFrames" video</p>
+                <p class="text-sm text-gray-400">Data Science Course • 5 hours ago</p>
+              </div>
+            </div>
+
+            <div class="flex items-start">
+              <div class="bg-purple-600 rounded-full p-2 mr-3">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m2 6H7a2 2 0 01-2-2V6a2 2 0 012-2h5l2 2h6a2 2 0 012 2v2" />
+</svg>
+              </div>
+              <div>
+                <p class="font-medium">Submitted "CSS Flexbox" assignment</p>
+                <p class="text-sm text-gray-400">Web Development Course • 1 day ago</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+        <!-- Course Library Page (Hidden by default) -->
+    <main id="library" class="page p-6 hidden">
+      <!-- Heading and filter buttons -->
+      <!-- Grid of course cards -->
+      <!-- (Paste or reuse your original four library cards here) -->
+    </main>
+
+    <!-- Course Detail Page (Hidden by default) -->
+    <main id="course-detail" class="page p-6 hidden">
+      <!-- Course Banner -->
+      <!-- Description, What You’ll Learn -->
+      <!-- Course Content dropdowns -->
+      <!-- Video + Enrollment sidebar -->
+      <!-- (Paste your course detail content exactly as-is) -->
+    </main>
+
+  </div> <!-- End of Main Wrapper -->
+
+  <!-- External JS -->
+  <script src="script.js" defer></script>
+</body>
+</html>
