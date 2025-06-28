@@ -17,3 +17,4 @@
 ## DESCRIPTION:- LearnHub is a responsive multi-page frontend interface for an e-learning platform, built with HTML, CSS (including Tailwind CSS), and JavaScript. It replicates the core structure of modern online course dashboards—featuring a collapsible sidebar, animated dropdowns, real-time progress visualization, and dynamic content switching between Dashboard, Library, and Progress Tracking views.
 
 #OUTPUT: 
+![img](https://github.com/user-attachments/assets/88ab9fe8-ae08-464d-956a-c5dca768fa0c)
